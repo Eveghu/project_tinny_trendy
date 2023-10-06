@@ -28,8 +28,11 @@ Route::resource('blouses', BlousesController::class);
 Route::post('pants/create', [App\Http\Controllers\PantsController::class, 'create']);
 Route::resource('pants', PantsController::class);
 
-Route::post('sets/create', [App\Http\Controllers\PantsController::class, 'create']);
-Route::resource('pants', PantsController::class);
+Route::post('sets/create', [App\Http\Controllers\SetsController::class, 'create']);
+Route::resource('sets', SetsController::class);
+
+Route::post('dresses/create', [App\Http\Controllers\DressesController::class, 'create']);
+Route::resource('dresses', DressesController::class);
 
 Auth::routes();
 
