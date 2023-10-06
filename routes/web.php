@@ -25,6 +25,12 @@ Route::get('/', function () {
 Route::post('blouses/create', [App\Http\Controllers\BlousesController::class, 'create']);
 Route::resource('blouses', BlousesController::class);
 
+Route::post('pants/create', [App\Http\Controllers\PantsController::class, 'create']);
+Route::resource('pants', PantsController::class);
+
+Route::post('sets/create', [App\Http\Controllers\PantsController::class, 'create']);
+Route::resource('pants', PantsController::class);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

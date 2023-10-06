@@ -1,37 +1,29 @@
-<?php
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('pants', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('users_id');
-        $table->string('name_product', 20);
-        $table->string('description', 45);
-        $table->string('color', 30);
-        $table->string('size', 15);
-        $table->integer('amount');
-        $table->decimal('price', 3, 2);
-        $table->timestamps();
-
-        $table->foreign('users_id')->references('id')->on('users')->onDelete('NO ACTION')->onUpdate('NO ACTION');
-    });
-}    
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('pants');
-
-    }
-};
+@extends('layouts.app')
+@section('title','Pants Create')
+@section('content')
+<form class="form-group" method="POST" action="/pants" >
+    @csrf
+    <div class="form-group">
+        <label for="">ID:</label>
+        <input type="text" name="id" class="form-control">
+        <label for="">ID USUARIO:</label>
+        <input type="text" name="users_id" class="form-control">
+        <label for="">NOMBRE DEL PRODUCTO:</label>
+        <input type="text" name="name_product" class="form-control">
+        <label for="">DESCRIPCION:</label>
+        <input type="text" name="description" class="form-control">
+        <label for="">COLOR:</label>
+        <input type="text" name="color" class="form-control">
+        <label for="">TALLA:</label>
+        <input type="text" name="size" class="form-control">
+        <label for="">CANTIDAD:</label>
+        <input type="text" name="amount" class="form-control">
+        <label for="">PRECIO:</label>
+        <input type="text" name="price" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Guardar</button>
+    </form>
+@endsection
