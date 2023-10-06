@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlousesController;
+use App\Http\Controllers\PantsController;
+use App\Http\Controllers\SetsController;
+use App\Http\Controllers\DressesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('blouses/create', [App\Http\Controllers\BlousesController::class, 'create']);
+Route::resource('blouses', BlousesController::class);
 
 Auth::routes();
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('color', 30);
             $table->string('size', 15);
             $table->integer('amount');
-            $table->decimal('price', 3, 2);
+            $table->decimal('price', 8, 2);
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')->on('users')->onDelete('NO ACTION')->onUpdate('NO ACTION');
