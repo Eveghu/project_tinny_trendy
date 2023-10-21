@@ -31,26 +31,71 @@ class BlousesController extends Controller
         $blouse -> amount = $request -> input('amount');
         $blouse -> price = $request -> input('price');
         $blouse -> save();
-        return view('blousesindex');
+        return redirect()->route('blouses.index');
     }
 
-    public function show($id)
-    {
-        // Lógica para mostrar un registro específico del modelo en la vista
-    }
-
-    public function edit($id)
-    {
-        // Lógica para mostrar el formulario de edición
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Lógica para actualizar un registro específico en la base de datos
-    }
-
-    public function destroy($id)
-    {
-        // Lógica para eliminar un registro específico de la base de datos
-    }
+    public function show(Blouses $blouse)
+{
+    return view('blousesshow', compact('blouse'));
 }
+
+
+public function edit($id)
+{
+    $blouse = Blouses::find($id);
+    return view('editblouse', compact('blouse'));
+}
+
+
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name_product' => 'required',
+        'description' => 'required',
+        'color' => 'required',
+        'size' => 'required',
+        'amount' => 'required|numeric',
+        'price' => 'required|numeric',
+    ]);
+
+    $blouse = Blouses::find($id);
+
+    if (!$blouse) {
+        return redirect()->route('blouses.index')->with('error', 'Blouse not found');
+    }
+
+    $blouse->name_product = $request->input('name_product');
+    $blouse->description = $request->input('description');
+    $blouse->color = $request->input('color');
+    $blouse->size = $request->input('size');
+    $blouse->amount = $request->input('amount');
+    $blouse->price = $request->input('price');
+
+    $blouse->save();
+
+    return redirect()->route('blouses.index')->with('success', 'Blouse updated successfully');
+}
+
+
+    // ...
+
+
+    public function destroy(string $id)
+    {
+        $blouse = Blouses::find($id);
+
+        if (!$blouse) {
+            return redirect('/blouses')->with('error', 'La blusa no existe o ya ha sido eliminada');
+        }
+
+        $blouse->delete();
+
+        return redirect('/blouses')->with('success', 'Blusa eliminada exitosamente');
+    }
+
+    // ...
+
+}
+
+   

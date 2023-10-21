@@ -31,7 +31,7 @@ class DressesController extends Controller
         $dress -> amount = $request -> input('amount');
         $dress -> price = $request -> input('price');
         $dress -> save();
-        return view('dressesindex');
+        return redirect()->route('dresses.index');
     }
 
     public function show($id)

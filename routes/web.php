@@ -34,6 +34,15 @@ Route::resource('sets', SetsController::class);
 Route::post('dresses/create', [App\Http\Controllers\DressesController::class, 'create']);
 Route::resource('dresses', DressesController::class);
 
+
+Route::get('/blouses/{id}/editblouse', [BlousesController::class, 'edit'])->name('blouses.edit');
+
+
+Route::get('/blouses', [BlousesController::class, 'index'])->name('blouses.index');
+
+
+Route::get('delete/{id}',[BlousesController::class, 'destroy']);
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

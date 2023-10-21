@@ -11,7 +11,8 @@
         <div class="card-body">
           <h5 class="card-title">{{$blouse ->name_product}}</h5>
           <p class="card-text"> </p>
-          <a href="#" class="btn btn-primary">VER MAS...</a>
+          <a href="/blouses/{{$blouse->id}}" class="btn btn-secondary">MOSTRAR</a>
+
     </div>
   </div>
     </div>

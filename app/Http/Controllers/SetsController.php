@@ -31,7 +31,7 @@ class SetsController extends Controller
         $set -> amount = $request -> input('amount');
         $set -> price = $request -> input('price');
         $set -> save();
-        return view('setsindex');
+        return redirect()->route('sets.index');
     }
 
     public function show($id)

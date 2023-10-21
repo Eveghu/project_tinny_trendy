@@ -31,7 +31,7 @@ class PantsController extends Controller
         $pant -> amount = $request -> input('amount');
         $pant -> price = $request -> input('price');
         $pant -> save();
-        return view('pantsindex');
+        return redirect()->route('pants.index');
     }
 
     public function show($id)
