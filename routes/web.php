@@ -36,12 +36,18 @@ Route::resource('dresses', DressesController::class);
 
 
 Route::get('/blouses/{id}/editblouse', [BlousesController::class, 'edit'])->name('blouses.edit');
+Route::get('/pants/{id}/editpant', [PantsController::class, 'edit'])->name('pants.edit');
+
 
 
 Route::get('/blouses', [BlousesController::class, 'index'])->name('blouses.index');
+Route::get('/pants', [PantsController::class, 'index'])->name('pants.index');
+
 
 
 Route::get('delete/{id}',[BlousesController::class, 'destroy']);
+Route::get('delete/{id}',[PantsController::class, 'destroy']);
+
 
 
 Auth::routes();

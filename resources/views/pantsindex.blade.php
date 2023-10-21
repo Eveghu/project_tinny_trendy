@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Pants')
+@section('title','Blouses')
 @section ('content')
 @csrf
 
@@ -11,7 +11,8 @@
         <div class="card-body">
           <h5 class="card-title">{{$pant ->name_product}}</h5>
           <p class="card-text"> </p>
-          <a href="#" class="btn btn-primary">VER MAS...</a>
+          <a href="/pants/{{$pant->id}}" class="btn btn-secondary">MOSTRAR</a>
+
     </div>
   </div>
     </div>

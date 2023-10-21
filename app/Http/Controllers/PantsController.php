@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Models\Pants;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ class PantsController extends Controller
 {
     public function index()
     {
-        $pants=Pants::all();
+        $pants = Pants::all();
         return view('pantsindex', compact('pants'));
     }
 
@@ -20,37 +21,94 @@ class PantsController extends Controller
 
     public function store(Request $request)
     {
-        //return $request->all();
+        $request->validate([
+            'id' => 'required',
+            'users_id' => 'required',
+            'name_product' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+            'size' => 'required',
+            'amount' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+
         $pant = new Pants();
-        $pant-> id = $request -> input('id');
-        $pant -> users_id = $request -> input('users_id');
-        $pant -> name_product = $request -> input('name_product');
-        $pant -> description = $request -> input('description');
-        $pant -> color = $request -> input('color');
-        $pant -> size = $request -> input('size');
-        $pant -> amount = $request -> input('amount');
-        $pant -> price = $request -> input('price');
-        $pant -> save();
+        $pant->id = $request->input('id');
+        $pant->users_id = $request->input('users_id');
+        $pant->name_product = $request->input('name_product');
+        $pant->description = $request->input('description');
+        $pant->color = $request->input('color');
+        $pant->size = $request->input('size');
+        $pant->amount = $request->input('amount');
+        $pant->price = $request->input('price');
+        $pant->save();
+
         return redirect()->route('pants.index');
     }
 
-    public function show($id)
+    public function show(Pants $pant)
     {
-        // Lógica para mostrar un registro específico del modelo en la vista
+        return view('pantsshow', compact('pant'));
     }
-
+    
+    
     public function edit($id)
     {
-        // Lógica para mostrar el formulario de edición
+        $pant = Pants::find($id);
+        return view('editpant', compact('pant'));
     }
-
+    
+    
+    
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar un registro específico en la base de datos
+        $request->validate([
+            'name_product' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+            'size' => 'required',
+            'amount' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+    
+        $pant = Pants::find($id);
+    
+        if (!$pant) {
+            return redirect()->route('pants.index')->with('error', 'Pant not found');
+        }
+    
+        $pant->name_product = $request->input('name_product');
+        $pant->description = $request->input('description');
+        $pant->color = $request->input('color');
+        $pant->size = $request->input('size');
+        $pant->amount = $request->input('amount');
+        $pant->price = $request->input('price');
+    
+        $pant->save();
+    
+        return redirect()->route('pants.index')->with('success', 'Pant updated successfully');
     }
-
-    public function destroy($id)
-    {
-        // Lógica para eliminar un registro específico de la base de datos
+    
+    
+        // ...
+    
+    
+        public function destroy(string $id)
+        {
+            $pant = Pants::find($id);
+    
+            if (!$pant) {
+                return redirect('/blouses')->with('error', 'El pantalón no existe o ya ha sido eliminada');
+            }
+    
+            $pant->delete();
+    
+            return redirect('/Pants')->with('success', 'Pantalón eliminado exitosamente');
+        }
+    
+        // ...
+    
     }
-}
+    
+       
+    
