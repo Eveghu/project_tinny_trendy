@@ -34,23 +34,62 @@ class SetsController extends Controller
         return redirect()->route('sets.index');
     }
 
-    public function show($id)
+    public function show(Sets $set)
     {
-        // Lógica para mostrar un registro específico del modelo en la vista
+        return view('setsshow', compact('set'));
     }
 
     public function edit($id)
     {
-        // Lógica para mostrar el formulario de edición
+        $set = Sets::find($id);
+        return view('editset', compact('set'));
     }
+    
 
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar un registro específico en la base de datos
+        $request->validate([
+            'name_product' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+            'size' => 'required',
+            'amount' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+    
+        $set = Sets::find($id);
+    
+        if (!$set) {
+            return redirect()->route('sets.index')->with('error', 'Set not found');
+        }
+    
+        $set->name_product = $request->input('name_product');
+        $set->description = $request->input('description');
+        $set->color = $request->input('color');
+        $set->size = $request->input('size');
+        $set->amount = $request->input('amount');
+        $set->price = $request->input('price');
+    
+        $set->save();
+    
+        return redirect()->route('sets.index')->with('success', 'Set updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        // Lógica para eliminar un registro específico de la base de datos
+        $set = Sets::find($id);
+
+        if (!$set) {
+            return redirect('/sets')->with('error', 'El set no existe o ya ha sido eliminada');
+        }
+
+        $set->delete();
+
+        return redirect('/sets')->with('success', 'Set eliminado exitosamente');
     }
+
+    // ...
+
 }
+
+   
