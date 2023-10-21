@@ -34,23 +34,61 @@ class DressesController extends Controller
         return redirect()->route('dresses.index');
     }
 
-    public function show($id)
+    public function show(Dresses $dress)
     {
-        // Lógica para mostrar un registro específico del modelo en la vista
+        return view('dressesshow', compact('dress'));
     }
 
     public function edit($id)
     {
-        // Lógica para mostrar el formulario de edición
+        $dress = Dresses::find($id);
+        return view('editdress', compact('dress'));
     }
 
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar un registro específico en la base de datos
+        $request->validate([
+            'name_product' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+            'size' => 'required',
+            'amount' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+    
+        $dress = Dresses::find($id);
+    
+        if (!$dress) {
+            return redirect()->route('dresses.index')->with('error', 'Dress not found');
+        }
+    
+        $dress->name_product = $request->input('name_product');
+        $dress->description = $request->input('description');
+        $dress->color = $request->input('color');
+        $dress->size = $request->input('size');
+        $dress->amount = $request->input('amount');
+        $dress->price = $request->input('price');
+    
+        $dress->save();
+    
+        return redirect()->route('dresses.index')->with('success', 'Dress updated successfully');
+    }
+    
+    public function destroy(string $id)
+    {
+        $dress = Dresses::find($id);
+
+        if (!$dress) {
+            return redirect('/dresses')->with('error', 'El vestido no existe o ya ha sido eliminada');
+        }
+
+        $dress->delete();
+
+        return redirect('/dresses')->with('success', 'Vestido eliminado exitosamente');
     }
 
-    public function destroy($id)
-    {
-        // Lógica para eliminar un registro específico de la base de datos
-    }
+    // ...
+
 }
+
+   
