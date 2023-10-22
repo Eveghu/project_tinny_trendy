@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="color" class="form-label">Color:</label>
-            <input type="text" name= "color" value="{{ $pant->color }}" class="form-control">
+            <input type="text" name="color" value="{{ $pant->color }}" class="form-control">
         </div>
         <div class="mb-3">
             <label for="size" class="form-label">Talla:</label>
@@ -31,10 +31,11 @@
             <label for="price" class="form-label">Precio:</label>
             <input type="text" name="price" value="{{ $pant->price }}" class="form-control">
         </div>
-        <!-- Agrega otros campos para la edición del pantalón aquí -->
+        <!-- Agrega otros campos para la edición de la blusa aquí -->
         <div class="text-center">
             <button type="submit" class="btn btn-primary">GUARDAR</button>
         </div>
     </form>
 </div>
 @endsection
+

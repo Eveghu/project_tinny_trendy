@@ -81,21 +81,22 @@ public function update(Request $request, $id)
     // ...
 
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $blouse = Blouses::find($id);
-
+    
         if (!$blouse) {
-            return redirect('/blouses')->with('error', 'La blusa no existe o ya ha sido eliminada');
+            return redirect('/blouse')->with('error', 'El pantalón no existe o ya ha sido eliminado');
         }
-
+    
         $blouse->delete();
-
-        return redirect('/blouses')->with('success', 'Blusa eliminada exitosamente');
+    
+        return redirect('/blouse')->with('success', 'Pantalón eliminado exitosamente');
     }
-
-    // ...
-
-}
-
+    
+        // ...
+    
+    }
+    
+       
    

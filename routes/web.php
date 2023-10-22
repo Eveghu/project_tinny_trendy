@@ -21,12 +21,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 Route::post('blouses/create', [App\Http\Controllers\BlousesController::class, 'create']);
 Route::resource('blouses', BlousesController::class);
 
 Route::post('pants/create', [App\Http\Controllers\PantsController::class, 'create']);
 Route::resource('pants', PantsController::class);
+
 
 Route::post('sets/create', [App\Http\Controllers\SetsController::class, 'create']);
 Route::resource('sets', SetsController::class);
@@ -51,9 +55,9 @@ Route::get('/dresses', [DressesController::class, 'index'])->name('dresses.index
 
 
 
-Route::get('delete/{id}',[BlousesController::class, 'destroy']);
-Route::get('delete/{id}',[PantsController::class, 'destroy']);
-Route::get('delete/{id}',[SetsController::class, 'destroy']);
+Route::post('blouses/delete/{id}', [BlousesController::class, 'destroy']);
+Route::post('pants/delete/{id}', [PantsController::class, 'destroy']);
+Route::post('sets/delete/{id}', [SetsController::class, 'destroy']);
 Route::get('delete/{id}',[DressesController::class, 'destroy']);
 
 

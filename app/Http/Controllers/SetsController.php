@@ -44,7 +44,8 @@ class SetsController extends Controller
         $set = Sets::find($id);
         return view('editset', compact('set'));
     }
-    
+   
+
 
     public function update(Request $request, $id)
     {
