@@ -58,7 +58,7 @@ Route::get('/dresses', [DressesController::class, 'index'])->name('dresses.index
 Route::post('blouses/delete/{id}', [BlousesController::class, 'destroy']);
 Route::post('pants/delete/{id}', [PantsController::class, 'destroy']);
 Route::post('sets/delete/{id}', [SetsController::class, 'destroy']);
-Route::get('delete/{id}',[DressesController::class, 'destroy']);
+Route::post('dresses/delete/{id}',[DressesController::class, 'destroy']);
 
 
 

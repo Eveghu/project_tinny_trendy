@@ -42,11 +42,10 @@
                 <td>{{ $dress->description }}</td>
                 <td>{{ $dress->color }}</td>
                 <td>{{ $dress->size }}</td>
-                <td>{{ $dress->quantity }}</td>
+                <td>{{ $dress->amount }}</td>
                 <td>{{ $dress->price }}</td>
                 <td>
                     <a href="/dresses/{{ $dress->id }}" class="btn custom-button">DETALLES</a>
-                    <a href="/delete/{{$dress->id}}" class="btn custom-button">ELIMINAR</a>
                     <a href="/dresses/{{$dress->id}}/editdress" class="btn custom-button">EDITAR</a>
                       
                 </td>

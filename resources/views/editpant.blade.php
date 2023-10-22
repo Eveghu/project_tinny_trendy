@@ -2,6 +2,22 @@
 @extends('layouts.app')
 @section('title', 'Pants Edit')
 @section('content')
+<style>
+    .custom-button {
+      font-size: 14px; /* Reduce el tamaño de la fuente */
+      background-color: #e7d8df; /* Cambia el color de fondo a tu elección */
+      color: #fff; /* Cambia el color del texto a blanco */
+      border: none;
+      padding: 5px 10px; /* Añade un espacio interno al botón */
+      border-radius: 5px; /* Añade bordes redondeados */
+      transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+  
+      /* Estilo al pasar el mouse por encima (hover) */
+      &:hover {
+          background-color: #ff8bb4; /* Cambia el color de fondo al pasar el mouse */
+      }
+  }
+  </style>
 <div class="container">
     <h2>EDITAR PANTALÓN</h2>
     <form method="POST" action="{{ route('pants.update', $pant->id) }}" enctype="multipart/form-data">
@@ -32,8 +48,15 @@
             <input type="text" name="price" value="{{ $pant->price }}" class="form-control">
         </div>
         <!-- Agrega otros campos para la edición de la blusa aquí -->
+     
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">GUARDAR</button>
+            <button type="submit" class="btn custom-button">GUARDAR</button>
+            <a href="/pants/{{ $pant->id }}" class="btn custom-button">DETALLES</a>
+                  <a href="{{ route('pants.create') }}" class="btn custom-button">AGREGAR PANTALÓN</a>
+                  <a href="{{ route('pants.index') }}" class="btn custom-button">VER PANTALONES</a>
+                  <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+
+
         </div>
     </form>
 </div>

@@ -70,6 +70,6 @@
 
         <button type="submit" class="btn custom-button">GUARDAR</button>
         <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-        <a href="{{ route('dresses.create') }}" class="btn custom-button">VER VESTIDOS</a>
+        <a href="{{ route('dresses.index') }}" class="btn custom-button">VER VESTIDOS</a>
     </form>
 </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Blouses')
+@section('title', 'Pants')
 @section('content')
 <h1 style="text-align: center;">DETALLES DE BLUSA</h1>
 
@@ -22,19 +22,19 @@
       </style>
     <div class="card-body">
         <h5 class="card-title">{{$blouse->name_product}}</h5>
-        <p class="card-text">ID USUARIO: {{$blouse->user_id}}</p>
-        <p class="card-text">ID BLUSA: {{$blouse->id}}</p>
+        <p class="card-text">ID USUARIO: {{$blouse->users_id}}</p>
+        <p class="card-text">ID PANTALÓN: {{$blouse->id}}</p>
         <p class="card-text">DESCRIPCIÓN: {{$blouse->description}}</p>
         <p class="card-text">COLOR: {{$blouse->color}}</p>
         <p class="card-text">TALLA: {{$blouse->size}}</p>
         <p class="card-text">CANTIDAD: {{$blouse->amount}}</p>
         <p class="card-text">PRECIO: ${{$blouse->price}}</p>
         <form method="POST" action="{{ url('blouses/delete', ['id' => $blouse->id]) }}">
-        @csrf
-        <button type="submit" class="btn custom-button">ELIMINAR</button>
-      </form>
-      <a href="/blouses/{{$blouse->id}}/editblouse" class="btn custom-button">EDITAR</a>
-    </div>
+          @csrf
+            <button type="submit" class="btn custom-button">ELIMINAR</button>
+        </form>
+        <a href="/blouses/{{$blouse->id}}/editblouse" class="btn custom-button">EDITAR</a>
+      </div>
 </div>
 <div style="margin-top: 0px; width: 18rem; margin: 70px auto;">
   <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
@@ -44,4 +44,3 @@
 </div>
 </div>
 @endsection
-

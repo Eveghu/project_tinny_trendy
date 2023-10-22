@@ -22,15 +22,18 @@
       </style>
     <div class="card-body">
         <h5 class="card-title">{{$dress->name_product}}</h5>
-        <p class="card-text">ID USUARIO: {{$dress->user_id}}</p>
+        <p class="card-text">ID USUARIO: {{$dress->users_id}}</p>
         <p class="card-text">ID VESTIDO: {{$dress->id}}</p>
         <p class="card-text">DESCRIPCIÓN: {{$dress->description}}</p>
         <p class="card-text">COLOR: {{$dress->color}}</p>
         <p class="card-text">TALLA: {{$dress->size}}</p>
         <p class="card-text">CANTIDAD: {{$dress->amount}}</p>
         <p class="card-text">PRECIO ${{$dress->price}}</p>
-        <a href="/delete/{{$dress->id}}" class="btn custom-button">ELIMINAR</a>
-        <a href="/dresses/{{$dress->id}}/editdress" class="btn custom-button">EDITAR</a>
+        <form method="POST" action="{{ url('dresses/delete', ['id' => $dress->id]) }}">
+          @csrf
+            <button type="submit" class="btn custom-button">ELIMINAR</button>
+        </form>
+       <a href="/dresses/{{$dress->id}}/editdress" class="btn custom-button">EDITAR</a>
     </div>
 </div>
 <div style="margin-top: 0px; width: 18rem; margin: 70px auto;">

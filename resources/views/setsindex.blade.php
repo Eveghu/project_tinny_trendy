@@ -42,12 +42,11 @@
                 <td>{{ $set->description }}</td>
                 <td>{{ $set->color }}</td>
                 <td>{{ $set->size }}</td>
-                <td>{{ $set->quantity }}</td>
+                <td>{{ $set->amount }}</td>
                 <td>{{ $set->price }}</td>
                 <td>
                     <a href="/sets/{{ $set->id }}" class="btn custom-button">DETALLES</a>
-                    <a href="/delete/{{$set->id}}" class="btn custom-button">ELIMINAR</a>
-                    <a href="/dresses/{{$set->id}}/editdress" class="btn custom-button">EDITAR</a>
+                    <a href="/sets/{{$set->id}}/editset" class="btn custom-button">EDITAR</a>
                       
                 </td>
             </tr>

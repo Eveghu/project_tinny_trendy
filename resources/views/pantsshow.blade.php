@@ -22,7 +22,7 @@
       </style>
     <div class="card-body">
         <h5 class="card-title">{{$pant->name_product}}</h5>
-        <p class="card-text">ID USUARIO: {{$pant->user_id}}</p>
+        <p class="card-text">ID USUARIO: {{$pant->users_id}}</p>
         <p class="card-text">ID PANTALÓN: {{$pant->id}}</p>
         <p class="card-text">DESCRIPCIÓN: {{$pant->description}}</p>
         <p class="card-text">COLOR: {{$pant->color}}</p>
@@ -33,14 +33,16 @@
             @csrf
             <button type="submit" class="btn custom-button">ELIMINAR</button>
         </form>
-                <a href="/pants/{{$pant->id}}/editpant" class="btn custom-button">EDITAR</a>
+        <a href="/pants/{{$pant->id}}/editpant" class="btn custom-button">EDITAR</a>
     </div>
 </div>
 <div style="margin-top: 0px; width: 18rem; margin: 70px auto;">
   <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-  <a href="{{ route('pants.create') }}" class="btn custom-button">AGREGAR PANTALÓN</a>
-  <div style="text-align: center; margin-top: 20px;">
+  <div style="text-align: center; margin-top: -32px; margin-left: 100px; width: 18rem;">
+    <a href="{{ route('pants.create') }}" class="btn custom-button">AGREGAR PANTALÓN</a>
+  <div style="text-align: center; margin-top: 20px; margin-left: -190px;">
     <a href="{{ route('pants.index') }}" class="btn custom-button">VER PANTALONES</a>
+</div>
 </div>
 </div>
 @endsection

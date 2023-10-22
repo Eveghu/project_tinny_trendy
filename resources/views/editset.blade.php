@@ -50,9 +50,11 @@
         <!-- Agrega otros campos para la edición de la blusa aquí -->
         <div class="text-center">
             <button type="submit" class="btn custom-button">GUARDAR</button>
-            <a href="/blouses/{{ $set->id }}" class="btn custom-button">DETALLES</a>
+            <a href="/sets/{{ $set->id }}" class="btn custom-button">DETALLES</a>
                   <a href="{{ route('sets.create') }}" class="btn custom-button">AGREGAR SET</a>
+                  <a href="{{ route('sets.index') }}" class="btn custom-button">VER SETS</a>
                   <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+
 
         </div>
     </form>

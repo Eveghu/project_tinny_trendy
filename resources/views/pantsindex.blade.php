@@ -42,12 +42,11 @@
                 <td>{{ $pant->description }}</td>
                 <td>{{ $pant->color }}</td>
                 <td>{{ $pant->size }}</td>
-                <td>{{ $pant->quantity }}</td>
+                <td>{{ $pant->amount }}</td>
                 <td>{{ $pant->price }}</td>
                 <td>
                     <a href="/pants/{{ $pant->id }}" class="btn custom-button">DETALLES</a>
-                    <a href="/delete/{{$pant->id}}" class="btn custom-button">ELIMINAR</a>
-                    <a href="/dresses/{{$pant->id}}/editdress" class="btn custom-button">EDITAR</a>
+                    <a href="/pants/{{$pant->id}}/editpant" class="btn custom-button">EDITAR</a>
                   
                 </td>
             </tr>

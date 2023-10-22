@@ -86,12 +86,12 @@ public function update(Request $request, $id)
         $blouse = Blouses::find($id);
     
         if (!$blouse) {
-            return redirect('/blouse')->with('error', 'El pantalón no existe o ya ha sido eliminado');
+            return redirect('/blouses')->with('error', 'El pantalón no existe o ya ha sido eliminado');
         }
     
         $blouse->delete();
     
-        return redirect('/blouse')->with('success', 'Pantalón eliminado exitosamente');
+        return redirect('/blouses')->with('success', 'Pantalón eliminado exitosamente');
     }
     
         // ...

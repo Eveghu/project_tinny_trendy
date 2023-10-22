@@ -22,7 +22,7 @@
       </style>
     <div class="card-body">
         <h5 class="card-title">{{$set->name_product}}</h5>
-        <p class="card-text">ID USUARIO: {{$set->user_id}}</p>
+        <p class="card-text">ID USUARIO: {{$set->users_id}}</p>
         <p class="card-text">ID SET: {{$set->id}}</p>
         <p class="card-text">DESCRIPCIÓN: {{$set->description}}</p>
         <p class="card-text">COLOR: {{$set->color}}</p>
@@ -37,7 +37,7 @@
 </div>
 <div style="margin-top: 0px; width: 18rem; margin: 70px auto;">
   <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-  <a href="{{ route('sets.create') }}" class="btn custom-button">AGREGAR BLUSA</a>
+  <a href="{{ route('sets.create') }}" class="btn custom-button">AGREGAR SET</a>
   <div style="text-align: center; margin-top: 20px;">
     <a href="{{ route('sets.index') }}" class="btn custom-button">VER SETS</a>
 </div>
